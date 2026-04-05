@@ -1,0 +1,16 @@
+carpeta1
+carpeta2
+n_numprimos.sh
+ordenar.sh
+concat.sh
+n_archivos.sh
+n_carpetas.sh
+fecha.txt
+actual.txt
+concatenados.txt
+name_dir.sh
+archivo1
+archivo2
+primos.txt
+alumnos.sh
+ordenados.txt
