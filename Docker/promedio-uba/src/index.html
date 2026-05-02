@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromedioUBA — Calculadora de Promedio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="app.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="logo">
+        <span class="logo__bracket">[</span>
+        <span class="logo__text">PromedioUBA</span>
+        <span class="logo__bracket">]</span>
+      </div>
+      <p class="header__sub">Calculadora de promedio ponderado · Ingeniería en Informática · FIUBA</p>
+    </div>
+    <div class="header__grid-lines" aria-hidden="true"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PANEL IZQUIERDO: formulario -->
+    <section class="panel panel--form" aria-label="Carga de materias">
+
+      <div class="panel__title">
+        <span class="step-badge">01</span>
+        <h2>Cargá tus materias</h2>
+      </div>
+
+      <form id="form-materia" class="form" novalidate>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="nombre-materia">Nombre de la materia</label>
+            <input
+              type="text"
+              id="nombre-materia"
+              name="nombre"
+              placeholder="ej: Algoritmos y Programación I"
+              autocomplete="off"
+              maxlength="60"
+            />
+          </div>
+        </div>
+
+        <div class="form__row form__row--split">
+          <div class="form__field">
+            <label for="nota-materia">Nota <span class="label__hint">(1 – 10)</span></label>
+            <input
+              type="number"
+              id="nota-materia"
+              name="nota"
+              placeholder="7"
+              min="1"
+              max="10"
+              step="1"
+            />
+          </div>
+          <div class="form__field">
+            <label for="creditos-materia">Créditos <span class="label__hint">(hs. cátedra)</span></label>
+            <input
+              type="number"
+              id="creditos-materia"
+              name="creditos"
+              placeholder="6"
+              min="1"
+              max="20"
+              step="1"
+            />
+          </div>
+        </div>
+
+        <p class="form__error" id="form-error" role="alert" aria-live="polite"></p>
+
+        <button type="submit" class="btn btn--primary" id="btn-agregar">
+          <span class="btn__icon">+</span>
+          <span>Agregar materia</span>
+        </button>
+      </form>
+
+      <!-- Acciones extra -->
+      <div class="form__actions">
+        <button class="btn btn--ghost btn--sm" id="btn-demo">
+          Cargar datos de ejemplo
+        </button>
+        <button class="btn btn--danger btn--sm" id="btn-limpiar">
+          Limpiar todo
+        </button>
+      </div>
+    </section>
+
+    <!-- PANEL DERECHO: tabla + resultado -->
+    <section class="panel panel--results" aria-label="Resultados">
+
+      <div class="panel__title">
+        <span class="step-badge">02</span>
+        <h2>Tu historial académico</h2>
+      </div>
+
+      <!-- Estado vacío -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-state__icon" aria-hidden="true">∑</div>
+        <p>Todavía no cargaste ninguna materia.<br/>Empezá agregando una al panel de la izquierda.</p>
+      </div>
+
+      <!-- Tabla -->
+      <div class="table-wrapper" id="table-wrapper" hidden>
+        <table class="table" id="tabla-materias" aria-label="Lista de materias">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Materia</th>
+              <th scope="col">Nota</th>
+              <th scope="col">Créditos</th>
+              <th scope="col"><span class="sr-only">Eliminar</span></th>
+            </tr>
+          </thead>
+          <tbody id="tabla-body">
+            <!-- filas generadas por JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Resultado promedio -->
+      <div class="result-card" id="result-card" hidden>
+        <div class="result-card__left">
+          <p class="result-card__label">Promedio ponderado</p>
+          <div class="result-card__score" id="resultado-promedio">—</div>
+          <p class="result-card__desc" id="resultado-desc"></p>
+        </div>
+        <div class="result-card__right">
+          <div class="result-card__stat">
+            <span class="stat__value" id="stat-materias">0</span>
+            <span class="stat__label">materias</span>
+          </div>
+          <div class="result-card__stat">
+            <span class="stat__value" id="stat-creditos">0</span>
+            <span class="stat__label">créditos</span>
+          </div>
+          <div class="result-card__stat">
+            <span class="stat__value" id="stat-mejor">—</span>
+            <span class="stat__label">mejor nota</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Hecho con 💙 para estudiantes de la FIUBA · <span id="year"></span></p>
+    <p class="footer__tech">HTML · CSS · JavaScript · Docker</p>
+  </footer>
+
+ 
+</body>
+</html>

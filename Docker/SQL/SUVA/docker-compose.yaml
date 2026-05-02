@@ -1,0 +1,13 @@
+services:
+
+    database_suva:
+      image: postgres:16
+      container_name: entorno_suva
+      environment:
+        POSTGRES_USER: emiliano
+        POSTGRES_PASSWORD: mamado
+        POSTGRES_DB: suva
+      ports:
+      - "5433:5432"
+      volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -1,0 +1,14 @@
+services:
+
+  database_stocks:
+    image: postgres:16
+    container_name: portafolio-inversiones
+    environment:
+      POSTGRES_USER: inversor
+      POSTGRES_PASSWORD: eth
+      POSTGRES_DB: Portafolio_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+

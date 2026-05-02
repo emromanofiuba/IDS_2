@@ -1,0 +1,51 @@
+CREATE TABLE planetas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250),
+    nivel_gravedad INTEGER NOT NULL
+);
+
+CREATE TABLE tipos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250)
+);
+
+CREATE TABLE razas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250),
+    planeta_origen_id INTEGER REFERENCES planetas(id)
+);
+
+CREATE TABLE personajes (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    ki INTEGER NOT NULL,
+    raza_id INTEGER REFERENCES razas(id),
+    planeta_de_origen_id INTEGER REFERENCES planetas(id),
+    multiplicador_danio INTEGER NOT NULL
+);
+
+CREATE TABLE tecnicas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250),
+    fuerte_contra_raza_id INTEGER REFERENCES razas(id),
+    tipo_id INTEGER REFERENCES tipos(id),
+    danio_base INTEGER NOT NULL
+);
+
+CREATE TABLE personaje_tecnica (
+    id SERIAL PRIMARY KEY,
+    personaje_id INTEGER REFERENCES personajes(id) NOT NULL,
+    tecnica_id INTEGER REFERENCES tecnicas(id) NOT NULL
+);
+
+CREATE TABLE bitacora_tecnicas_usadas (
+    id SERIAL PRIMARY KEY,
+    personaje_id INTEGER  REFERENCES personajes(id) NOT NULL,
+    tecnica_id INTEGER  REFERENCES tecnicas(id) NOT NULL,
+    fecha_uso TIMESTAMP NOT NULL,
+    impacto BOOLEAN NOT NULL
+);

@@ -1,0 +1,36 @@
+# =============================================================================
+# .dockerignore — Best Practice (slide 10 - Mastering)
+# Evita enviar archivos innecesarios al contexto de construcción de Docker.
+# Reduce el tamaño del contexto y acelera el build.
+# =============================================================================
+
+# Control de versiones
+.git/
+.gitignore
+.gitattributes
+
+# Documentación y archivos del proyecto (no van a la imagen)
+README.md
+*.md
+docs/
+
+# Editor y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Los propios archivos de Docker (no deben entrar en la imagen)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Logs locales
+*.log
+logs/
+
+# Archivos de entorno con secretos
+.env
+.env.*
