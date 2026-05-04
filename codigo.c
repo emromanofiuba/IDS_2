@@ -2,10 +2,9 @@
 
 void main()
 {
-int ingreso_numerico;
     printf("hello worlD");
     printf("Nueva modificacion");
    
    printf("Ahora me pinto ingresar un entero: ");
-   scanf("%i", &ingreso_numerico);
+   printf("Ahora no me pinta mas");
 }
