@@ -1,0 +1,13 @@
+services:
+
+    database_musica:
+      image: postgres:16
+      container_name: ejercicios_sql
+      environment:
+        POSTGRES_USER: emiliano
+        POSTGRES_PASSWORD: sql
+        POSTGRES_DB: musica
+      ports:
+      - "5434:5432"
+      volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
