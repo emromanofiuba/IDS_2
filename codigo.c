@@ -6,5 +6,4 @@ void main()
     printf("Nueva modificacion");
    
    printf("Ahora me pinto ingresar un entero: ");
-   printf("Ahora no me pinta mas");
 }
