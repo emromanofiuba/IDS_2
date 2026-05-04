@@ -7,5 +7,4 @@ int ingreso_numerico;
     printf("Nueva modificacion");
    
    printf("Ahora me pinto ingresar un entero: ");
-   scanf("%i", &ingreso_numerico);
 }
