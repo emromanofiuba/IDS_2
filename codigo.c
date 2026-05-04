@@ -2,7 +2,6 @@
 
 void main()
 {
-int ingreso_numerico;
     printf("hello worlD");
     printf("Nueva modificacion");
    
