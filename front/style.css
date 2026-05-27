@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(107, 176, 199)
+}
+
+.ejercicios  {
+    padding: 30px;
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    margin: 50px;
+}
+
+#primer_titulo {
+    text-align: center;
+}
+
+.ejercicios input {
+    padding: 30px;
+    background-color: rgb(92, 226, 43);
+    border: 3px;
+    border-radius: 2px;
+    border-color: black;
+}
